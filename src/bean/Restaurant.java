@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -36,6 +37,8 @@ public class Restaurant implements Serializable {
     private Owner owner;
     @OneToOne
     private Menu menu; 
+    @OneToMany(mappedBy = "resto")
+    private List<Ingredient> ingredientss;
 
     public Restaurant() {
     }

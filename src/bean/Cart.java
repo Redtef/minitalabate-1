@@ -24,13 +24,13 @@ public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private float prixTotal;
     @OneToOne(mappedBy = "cart")
     private Client client;
-    @OneToMany
-    private List<Food> foods;
+    @OneToMany(mappedBy = "cart")
+    private List<LigneCart> ligneCarts;
     @OneToOne
     private Restaurant resto;
 
@@ -55,17 +55,16 @@ public class Cart implements Serializable {
         this.client = client;
     }
 
-    public List<Food> getFoods() {
-        if (foods == null) {
-            foods = new ArrayList();
+ public List<LigneCart> getLigneCarts() {
+        if(ligneCarts == null){
+            ligneCarts = new ArrayList();
         }
-        return foods;
+        return ligneCarts;
     }
 
-    public void setFoods(List<Food> foods) {
-        this.foods = foods;
+    public void setLigneCarts(List<LigneCart> ligneCarts) {
+        this.ligneCarts = ligneCarts;
     }
-
     public Restaurant getResto() {
         return resto;
     }
@@ -107,7 +106,9 @@ public class Cart implements Serializable {
 
     @Override
     public String toString() {
-        return "Cart{" + "prixTotal=" + prixTotal + ", client=" + client + ", foods=" + foods + ", resto=" + resto + '}';
+        return "Cart{" + "id=" + id + ", prixTotal=" + prixTotal + ", client=" + client + ", ligneCarts=" + ligneCarts + ", resto=" + resto + '}';
     }
+
+   
 
 }

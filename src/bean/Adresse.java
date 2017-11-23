@@ -106,6 +106,14 @@ public class Adresse implements Serializable {
         this.restaurant = restaurant;
     }
 
+    public Adresse(String ville, String cite, String rue, int num) {
+        this.ville = ville;
+        this.cite = cite;
+        this.rue = rue;
+        this.num = num;
+    }
+
+    
     public Adresse(String ville, String cite, String rue, int etage, String immeuble, int num) {
         this.ville = ville;
         this.cite = cite;
